@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+
+  - group: name=ciscorelease state=present
+  - name : cisco release user creation
+    user: name=ciscorelease
+          password=ciscorelease
+          state=present     
+          createhome=yes   
+    
+
