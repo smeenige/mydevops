@@ -1,2 +1,0 @@
-# mydevops
-mydevops
