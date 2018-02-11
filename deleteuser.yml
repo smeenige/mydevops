@@ -1,0 +1,17 @@
+---
+- hosts: app
+  remote_user: root
+  become: no
+  gather_facts: yes
+  
+  tasks:
+  - name: delete splunkrelease user
+    user: name=splunkrelease
+          state=absent
+          remove=yes
+
+  - name: delete ciscorelease user
+    user: name=ciscorelease
+          state=absent
+          remove=yes
+

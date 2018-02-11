@@ -1,0 +1,26 @@
+---
+- hosts: 127.0.0.1
+  remote_user: splunk
+  connection: local
+  tasks:
+    - name: Check that the indexes.conf exists
+      stat:
+        path: /opt/splunk/etc/system/local/indexes.conf
+      register: stat_result
+
+    - name: copy indexes.conf file
+      copy: 
+        src: /tmp/indexes.conf 
+        dest: /opt/splunk/etc/system/local/indexes.conf
+        owner: splunk
+        group: splunk
+      when: stat_result.stat.exists == False
+    - name: stop splunk service
+      service:
+        name: splunk
+        state: stopped
+    - name: start splunk service
+      service:
+        name: splunk
+        state: started
+
