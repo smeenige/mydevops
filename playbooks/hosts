@@ -1,0 +1,9 @@
+[TEST]
+192.168.15.130
+
+#[TEST:vars]
+#ansible_ssh_user=ciscorelease
+#ansible_ssh_pass=releaseadmin
+#ansible_become_pass=releaseadmin
+
+

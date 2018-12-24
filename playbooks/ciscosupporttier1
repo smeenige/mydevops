@@ -1,0 +1,15 @@
+Host_Alias  L1_SUDO_HOSTS = ALL
+Runas_Alias L1_SUDO_RUNAS = root
+Cmnd_Alias  L1_SUDO_CMNDS = /usr/bin/ls, /usr/bin/cp, /bin/crontab -u * -l, /usr/bin/cat, /bin/tail, /bin/grep, /usr/bin/cat, /usr/bin/du, /usr/bin/gzip, /usr/local/bin/docker,  /usr/local/bin/relay_BDD_testcases.sh, /usr/sbin/tcpdump, /sbin/lsof, /bin/diff
+
+Cmd_Alias L1_SHELLZ = /bin/sh, /bin/bash, /sbin/nologin, /usr/bin/sh, /usr/bin/bash, /usr/sbin/nologin, /bin/csh, /bin/zsh, /bin/tcsh, /usr/bin/more, /usr/bin/view, /usr/bin/less, /bin/ksh, /usr/bin/ksh, /usr/bin/rsh
+
+
+Cmd_Alias L1_RP = /usr/bin/passwd, /usr/sbin/usermod
+
+Defaults secure_path="/sbin:/bin:/usr/sbin:/usr/bin"
+
+%ciscosupporttier1 L1_SUDO_HOSTS = (L1_SUDO_RUNAS) L1_SUDO_CMNDS, !L1_SHELLZ, !L1_RP
+%access\ -\ linux\ l1\ users@cisco-cms.com L1_SUDO_HOSTS = (L1_SUDO_RUNAS) L1_SUDO_CMNDS, !L1_SHELLZ, !L1_RP
+%role\ -\ linux\ l1\ users@cisco-cms.com L1_SUDO_HOSTS = (L1_SUDO_RUNAS) L1_SUDO_CMNDS, !L1_SHELLZ, !L1_RP
+
