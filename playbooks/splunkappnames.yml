@@ -1,6 +1,0 @@
----
-modules:
-  - /opt/splunk/UFWD-agnosticdata/splunkforwarder/etc/apps/CCMS-TA-agnosticdata/default/app.conf
-  - /opt/splunk/UFWD-agnosticdata/splunkforwarder/etc/apps/CCMS-TA-agnosticdata/default/app.conf
-  - /opt/splunk/UFWD-agnosticdata/splunkforwarder/etc/apps/CCMS-TA-agnosticdata/default/app.conf
-  - /opt/splunk/UFWD-agnosticdata/splunkforwarder/etc/apps/CCMS-TA-agnosticdata/default/app.conf
