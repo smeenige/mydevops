@@ -1,0 +1,15 @@
+---
+- hosts: TEST
+  become: true
+  tasks:
+    - name: Stop httpd service
+      service: name=httpd state=stopped
+      tags:
+        - stop
+ 
+    - name: Start httpd service
+      service: name=httpd state=started
+      tags:
+        - start
+
+

@@ -1,0 +1,38 @@
+---
+- hosts: TEST
+
+  tasks:
+    - name: Check if httpd is installed
+      shell: rpm -qa | grep httpd
+      tags:
+        - install
+      register: check_httpd
+      become: yes
+
+    - name: Notify if httpd is installed
+      debug: msg="httpd is installed on {{ inventory_hostname }}"
+      when: check_httpd.rc == 0
+      tags:
+        - install
+
+    - name: Get status of httpd service
+      command: service httpd status
+      register: httpd_status
+      become: yes
+      ignore_errors: true
+      tags:
+        - start
+        - stop
+
+    - name: Check if httpd service is stopped
+      debug: msg="{{ httpd_status.stdout }}"
+      tags:
+        - stop
+      become: yes
+
+    - name: Check if httpd service is running
+      debug: msg="{{ httpd_status.stdout }}"
+      tags:
+        - start
+      become: yes
+

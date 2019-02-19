@@ -1,0 +1,6 @@
+---
+
+ansible_ssh_user: ciscorelease
+ansible_ssh_pass: releaseadmin
+#ansible_become_pass: releaseadmin
+

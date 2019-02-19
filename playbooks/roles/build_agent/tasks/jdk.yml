@@ -1,0 +1,10 @@
+---
+  - name: download jdk rpm
+    get_url: url={{ jdk_url }} dest=/tmp  thirsty=no
+    tags:
+      - jdk
+
+  - name: setup java jdk
+    yum: name=/tmp/{{ jdk_software }} state=present
+    tags: 
+      - jdk

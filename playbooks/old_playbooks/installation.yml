@@ -1,0 +1,22 @@
+---
+- hosts: TEST
+  gather_facts: no
+  become: yes
+  
+  tasks:
+    - name: install httpd service
+      yum: name=httpd state=latest
+      tags:
+        - install
+ 
+    - name: Stop httpd service
+      service: name=httpd state=stopped
+      tags:
+        - stop
+ 
+    - name: Start httpd service
+      service: name=httpd state=started
+      tags:
+        - start
+
+

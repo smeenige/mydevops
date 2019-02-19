@@ -1,0 +1,4 @@
+---
+- include: jdk.yml
+- include: ant.yml
+- include: maven.yml

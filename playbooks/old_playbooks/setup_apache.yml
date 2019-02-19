@@ -1,0 +1,18 @@
+---
+- hosts: TEST
+  gather_facts: True
+  become: true
+  
+  tasks:
+    - fail:
+        msg: "You need to set ansible_ssh_user, ansible_ssh_pass and ansible_become_pass variables in 'hosts' file"
+      when: ansible_ssh_user == "" or ansible_ssh_pass == "" or ansible_become_pass  == ""
+
+    - name: Install httpd package
+      yum: name=httpd state=latest
+
+    - name: Starting httpd service
+      service: name=httpd state=started
+    
+    - name: Show how debug works
+      debug: msg="{{ ansible_distribution }}"

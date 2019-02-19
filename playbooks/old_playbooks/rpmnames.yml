@@ -1,0 +1,6 @@
+---
+modules:
+  - rsyslog
+  - openssl
+  - curl
+  - python

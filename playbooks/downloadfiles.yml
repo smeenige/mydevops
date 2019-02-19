@@ -1,0 +1,15 @@
+---
+- name: download file
+  hosts: TEST
+  gather_facts: False
+  vars_files:
+    - artifact_details.yml
+
+  tasks:
+  - name: get url for patches
+    get_url: url="http://engci-maven-master.cisco.com/artifactory/cms-quicksilver-release/{{item.sapphire_version}}/BDD-Based/{{item.patch_version_no}}/{{item.platform_name}}/{{item.artifact_name}}_{{item.artifact_version_no}}.tgz" dest="/tmp/{{item.artifact_name}}_{{item.artifact_version_no}}.tgz"
+    with_items: "{{ modules }}"
+#  - name: get url for main release
+#    get_url: url=http://engci-maven-master.cisco.com/artifactory/cms-quicksilver-release/{{item.sapphire_version}}/BDD-Based/{{item.platform_name}}/{{item.artifact_name}}_{{item.artifact_version_no}}.tgz dest="/tmp/{{item.artifact_name}}_{{item.artifact_version_no}}.tgz"
+#    with_items: "{{ modules }}"
+

@@ -1,0 +1,16 @@
+---
+  - name: download maven 
+    get_url: url={{ maven_url }} dest={{ maven_base_directory }} thirsty=no
+    tags:
+      - maven
+
+  - name: untar maven 
+    shell: cd /opt; tar -zxvf {{ maven_software }} creates=/opt/{{ maven_directory }}
+    tags:
+      - maven
+
+  - name: add maven file to /etc/profile.d
+    template: src=maven.sh dest=/etc/profile.d
+    tags:
+      - maven
+

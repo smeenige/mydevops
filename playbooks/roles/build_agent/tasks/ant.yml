@@ -1,0 +1,23 @@
+---
+  - name: create ant directory
+    file: dest={{ ant_base_directory }} state=directory owner=root group=root
+    tags:
+     - ant
+
+  - name: download ant
+    get_url: url={{ ant_url }} dest={{ ant_base_directory }} thirsty=no
+    tags:
+      - ant
+
+  - name: untar ant
+    shell: cd /opt; tar -zxvf {{ ant_software }} creates=/opt/{{ ant_directory }}
+    tags:
+      - ant
+
+  - name: add ant to /etc/profile.d
+    template: src=ant.sh dest=/etc/profile.d/ant.sh mode=0644 owner=root group=root
+    tags:
+     - ant
+
+
+

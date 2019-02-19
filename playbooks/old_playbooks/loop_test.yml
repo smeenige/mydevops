@@ -1,0 +1,47 @@
+---
+- hosts: TEST
+  gather_facts: False
+  become: yes
+
+  tasks:
+    
+    - name: copy MariaDB.repo file to /etc/yum.repos.d/ folder
+      copy: src=/etc/ansible/playbooks/base/MariaDB.repo dest=/etc/yum.repos.d/ owner=root group=root mode=0644
+    
+    - name: Check file MariaDB.repo is present in /etc/yum.repos.d/
+      stat:
+        path: /etc/yum.repos.d/MariaDB.repo
+      register: r
+
+    - name: Installing packages
+      yum: name={{item}} state=latest
+      with_items:
+         - MariaDB-server 
+         - MariaDB-client
+      when: r.stat.exists
+
+#    - name: Installing packages
+#      yum: name={{item.name}} state={{item.state}}
+#      with_items:
+#         - {name: 'MariaDB-server', state: 'latest'}
+#         - {name: 'MariaDB-client', state: 'latest'}
+#      when: r.stat.exists
+
+    - name: Start mariadb service
+      service: name=mariadb state=started enabled=yes
+      tags:
+        - start
+
+    - name: check mariadb status
+      shell: service mariadb status
+      register: result
+      tags:
+        - status
+
+    - name: showing mariadb status
+      debug:
+        var: result.stdout
+      tags:
+        - status
+    
+

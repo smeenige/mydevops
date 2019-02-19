@@ -1,0 +1,11 @@
+---
+- hosts: TEST
+  gather_facts: False
+
+  vars:
+    - service_name: "httpd"
+    - service_state: "stopped"
+ 
+  tasks:
+    - include: tasks/manage_service.yml
+

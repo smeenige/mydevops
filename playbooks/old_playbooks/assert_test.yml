@@ -1,0 +1,11 @@
+---  
+- hosts: TEST
+  tasks:
+    - action: shell /bin/ls
+      register: list_files
+
+    - assert:
+        that:
+          - "'ansible.txt' in list_files.stdout_lines"
+
+

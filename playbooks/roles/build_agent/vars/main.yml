@@ -1,0 +1,17 @@
+---
+#Ant related variable configurations
+ant_url: "http://mirrors.estointernet.in/apache//ant/binaries/apache-ant-1.10.5-bin.tar.gz"
+ant_base_directory: /opt/
+ant_software: apache-ant-1.10.5-bin.tar.gz
+ant_directory: apache-ant-1.10.5
+
+#jdk related variables
+jdk_url: "https://download.oracle.com/otn-pub/java/jdk/8u191-b12/2787e4a523244c269598db4e85c51e0c/jdk-8u191-linux-x64.rpm"
+jdk_software: jdk-8u191-linux-x64.rpm
+
+#maven variables
+maven_url: "http://mirrors.wuchna.com/apachemirror/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz"
+maven_software: apache-maven-3.6.0-bin.tar.gz
+maven_directory: apache-maven-3.6.0
+maven_base_directory: /opt/
+

@@ -1,9 +1,11 @@
 [TEST]
 192.168.15.130
+#192.168.15.131
 
 #[TEST:vars]
 #ansible_ssh_user=ciscorelease
 #ansible_ssh_pass=releaseadmin
 #ansible_become_pass=releaseadmin
 
-
+[build_agents]
+192.168.15.130

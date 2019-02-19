@@ -1,0 +1,27 @@
+---
+- hosts: app
+  remote_user: root
+  become: no
+  vars_files: ['credentials.yml']
+
+  tasks:
+  - name: creating ciscorelease user
+    user: name=ciscorelease
+          state=present 
+          password={{ ciscorelease_password }}
+          shell=/bin/bash
+          createhome=yes
+
+  - name: creating splunkrelease user
+    user: name=splunkrelease
+          state=present
+          password={{ splunkrelease_password }}
+          shell=/bin/bash
+          createhome=yes
+
+
+
+
+
+
+
